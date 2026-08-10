@@ -58,6 +58,10 @@ const createNotification = async ({
  * Sends a tax summary notification to all professionals for the current month
  */
 const notifyAllProsOfTax = async () => {
+  // Lazy require to avoid a circular dependency (adminService imports this module).
+  const { getDetailedStats } = require('./adminService');
+  const USER_TABLE = 'utilisateur';
+
   const { data: pros, error: proError } = await supabase
     .from(USER_TABLE)
     .select('id, nom, prenom')
@@ -67,9 +71,9 @@ const notifyAllProsOfTax = async () => {
 
   const now = new Date();
   const monthName = now.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-  
+
   // We call our stats logic to get current figures
-  const fullStats = await getDetailedStats(); 
+  const fullStats = await getDetailedStats();
   const breakdown = fullStats.pro_taxation_breakdown;
 
   const results = [];

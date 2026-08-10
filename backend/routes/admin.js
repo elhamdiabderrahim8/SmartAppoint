@@ -18,6 +18,7 @@ const {
   buildAdminReportData,
 } = require('../services/adminService');
 const { buildPdfBuffer } = require('../utils/adminReport');
+const { notifyAllProsOfTax } = require('../services/notificationService');
 
 const router = express.Router();
 
