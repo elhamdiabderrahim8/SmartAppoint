@@ -1,5 +1,14 @@
 import { memo } from 'react';
-import { ArrowRight, BrainCircuit, CalendarClock, CheckCircle2, LayoutDashboard, ShieldCheck, Sparkles, UsersRound } from 'lucide-react';
+import {
+  ArrowRight,
+  BrainCircuit,
+  CalendarClock,
+  CheckCircle2,
+  LayoutDashboard,
+  ShieldCheck,
+  Sparkles,
+  UsersRound,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './PublicPages.css';
 
@@ -45,9 +54,25 @@ const executionSteps = [
   'Permettre au professionnel de mieux gerer son activite',
 ];
 
+const heroMetrics = [
+  { value: 'Demandes', label: 'Accepter ou refuser les rendez-vous depuis un seul espace' },
+  { value: 'IA', label: 'Visualiser le risque d absence avant validation' },
+  { value: 'Suivi', label: 'Retrouver clients, services et indicateurs essentiels' },
+];
+
 function LandingPage() {
   return (
     <div className="public-page public-page-pro">
+      <div className="aurora" aria-hidden="true">
+        <span className="aurora-blob aurora-blob-1" />
+        <span className="aurora-blob aurora-blob-2" />
+        <span className="aurora-blob aurora-blob-3" />
+        <span className="aurora-grid" />
+        <span className="aurora-spark aurora-spark-1" />
+        <span className="aurora-spark aurora-spark-2" />
+        <span className="aurora-spark aurora-spark-3" />
+      </div>
+
       <header className="public-header">
         <Link to="/" className="public-brand">
           <img
@@ -72,7 +97,7 @@ function LandingPage() {
               <Sparkles size={14} />
               Plateforme de rendez-vous pour clients et professionnels
             </span>
-            <h1>Gerez vos rendez-vous et trouvez le bon professionnel en toute confiance.</h1>
+            <h1>Gerez vos rendez-vous et trouvez le bon professionnel <em>en toute confiance</em>.</h1>
             <p className="hero-text">
               SmartAppoint centralise la prise de rendez-vous, la recherche de professionnels,
               le suivi des demandes et le paiement en ligne dans une seule plateforme.
@@ -97,6 +122,86 @@ function LandingPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="showcase">
+            <div className="showcase-media">
+              <div className="showcase-glow" aria-hidden="true" />
+              <div className="showcase-frame">
+              <div className="showcase-bar">
+                <span className="showcase-dot showcase-dot-r" />
+                <span className="showcase-dot showcase-dot-y" />
+                <span className="showcase-dot showcase-dot-g" />
+                <span className="showcase-url">smartappoint.app · espace professionnel</span>
+              </div>
+
+              <div className="showcase-body">
+                <div className="showcase-card showcase-card-primary">
+                  <p className="showcase-label">Valeur pour le professionnel</p>
+                  <h3>Un espace unique pour accepter, suivre et piloter les rendez-vous.</h3>
+                  <div className="showcase-metrics">
+                    {heroMetrics.map((metric) => (
+                      <div key={metric.value}>
+                        <strong>{metric.value}</strong>
+                        <span>{metric.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="showcase-row">
+                  <div className="showcase-card">
+                    <div className="showcase-analytics-head">
+                      <div>
+                        <p className="showcase-label">Vue d ensemble</p>
+                        <strong>Suivi de l activite</strong>
+                      </div>
+                      <span className="showcase-badge">+18%</span>
+                    </div>
+                    <div className="showcase-bars" aria-hidden="true">
+                      <span style={{ '--bar-size': '74%' }} />
+                      <span style={{ '--bar-size': '46%' }} />
+                      <span style={{ '--bar-size': '88%' }} />
+                      <span style={{ '--bar-size': '62%' }} />
+                      <span style={{ '--bar-size': '96%' }} />
+                    </div>
+                    <div className="showcase-analytics-summary">
+                      {executionSteps.map((step) => (
+                        <div key={step} className="showcase-analytics-step">
+                          <CheckCircle2 size={14} />
+                          <span>{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="showcase-card">
+                    <div className="showcase-mini-stat">
+                      <UsersRound size={18} />
+                      <div>
+                        <strong>Parcours plus rassurant</strong>
+                        <span>Le client comprend rapidement comment chercher, comparer et reserver</span>
+                      </div>
+                    </div>
+                    <div className="showcase-mini-stat">
+                      <BrainCircuit size={18} />
+                      <div>
+                        <strong>Decision assistee</strong>
+                        <span>Le professionnel dispose d une aide supplementaire avant validation</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <span className="showcase-chip showcase-chip-1">Planning</span>
+              <span className="showcase-chip showcase-chip-2">Analyse IA</span>
+              <span className="showcase-chip showcase-chip-3">Tableaux de bord</span>
+              <span className="showcase-chip showcase-chip-4">
+                <ShieldCheck size={13} /> Comptes verifies
+              </span>
+            </div>
 
             <div className="public-signal-row">
               {professionalSignals.map((item) => (
@@ -105,79 +210,6 @@ function LandingPage() {
                   <span>{item.label}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="hero-panel">
-            <div className="hero-panel-orbit">
-              <span className="hero-orbit-pill">Planning</span>
-              <span className="hero-orbit-pill">Analyse IA</span>
-              <span className="hero-orbit-pill">Tableaux de bord</span>
-            </div>
-
-            <div className="hero-panel-card hero-panel-card-primary">
-              <p className="hero-panel-label">Valeur pour le professionnel</p>
-              <h2>Un espace unique pour accepter, suivre et piloter les rendez-vous.</h2>
-              <div className="hero-metrics">
-                <div>
-                  <strong>Demandes</strong>
-                  <span>Accepter ou refuser les rendez-vous depuis un seul espace</span>
-                </div>
-                <div>
-                  <strong>IA</strong>
-                  <span>Visualiser le risque d absence avant validation</span>
-                </div>
-                <div>
-                  <strong>Suivi</strong>
-                  <span>Retrouver clients, services et indicateurs essentiels</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-panel-card hero-panel-card-analytics">
-              <div className="hero-analytics-head">
-                <div>
-                  <p className="hero-panel-label">Vue d ensemble</p>
-                  <strong>Suivi de l activite</strong>
-                </div>
-                <span className="hero-analytics-badge">+18%</span>
-              </div>
-              <div className="hero-analytics-bars" aria-hidden="true">
-                <span style={{ '--bar-size': '74%' }} />
-                <span style={{ '--bar-size': '46%' }} />
-                <span style={{ '--bar-size': '88%' }} />
-                <span style={{ '--bar-size': '62%' }} />
-                <span style={{ '--bar-size': '96%' }} />
-              </div>
-              <div className="hero-analytics-summary">
-                {executionSteps.map((step) => (
-                  <div key={step} className="hero-analytics-step">
-                    <CheckCircle2 size={14} />
-                    <span>{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-panel-card hero-panel-card-soft">
-              <div className="hero-mini-stat">
-                <UsersRound size={18} />
-                <div>
-                  <strong>Parcours plus rassurant</strong>
-                  <span>Le client comprend rapidement comment chercher, comparer et reserver</span>
-                </div>
-              </div>
-              <div className="hero-mini-stat">
-                <BrainCircuit size={18} />
-                <div>
-                  <strong>Decision assistee</strong>
-                  <span>Le professionnel dispose d une aide supplementaire avant validation</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="public-floating-badge public-floating-badge-pro">
-              Une plateforme unique pour reserver et gerer les rendez-vous
             </div>
           </div>
         </section>

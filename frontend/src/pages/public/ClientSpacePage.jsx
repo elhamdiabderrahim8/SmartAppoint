@@ -1,5 +1,14 @@
 import { memo } from 'react';
-import { BellRing, CalendarDays, ChevronRight, CreditCard, Search, ShieldCheck, UserRound, Workflow } from 'lucide-react';
+import {
+  BellRing,
+  CalendarDays,
+  ChevronRight,
+  CreditCard,
+  Search,
+  ShieldCheck,
+  UserRound,
+  Workflow,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './PublicPages.css';
 
@@ -63,6 +72,16 @@ const clientSteps = [
 function ClientSpacePage() {
   return (
     <div className="public-page public-page-client">
+      <div className="aurora" aria-hidden="true">
+        <span className="aurora-blob aurora-blob-1" />
+        <span className="aurora-blob aurora-blob-2" />
+        <span className="aurora-blob aurora-blob-3" />
+        <span className="aurora-grid" />
+        <span className="aurora-spark aurora-spark-1" />
+        <span className="aurora-spark aurora-spark-2" />
+        <span className="aurora-spark aurora-spark-3" />
+      </div>
+
       <header className="public-header">
         <Link to="/" className="public-brand">
           <img
@@ -87,7 +106,7 @@ function ClientSpacePage() {
               <Workflow size={14} />
               Espace client SmartAppoint
             </span>
-            <h1>Trouvez un professionnel, reservez en ligne et suivez vos rendez-vous facilement.</h1>
+            <h1>Trouvez un professionnel, reservez en ligne et <em>suivez vos rendez-vous facilement</em>.</h1>
             <p className="hero-text">
               Cette page presente clairement ce que le client peut faire sur SmartAppoint:
               rechercher un prestataire, comparer les services, reserver un rendez-vous
@@ -113,35 +132,61 @@ function ClientSpacePage() {
             </div>
           </div>
 
-          <div className="client-showcase-card">
-            <div className="client-showcase-glow" aria-hidden="true" />
-            <div className="client-showcase-top">
-              <span>Parcours client</span>
-              <ShieldCheck size={18} />
-            </div>
+          <div className="showcase">
+            <div className="showcase-media">
+              <div className="showcase-glow" aria-hidden="true" />
+              <div className="showcase-frame">
+              <div className="showcase-bar">
+                <span className="showcase-dot showcase-dot-r" />
+                <span className="showcase-dot showcase-dot-y" />
+                <span className="showcase-dot showcase-dot-g" />
+                <span className="showcase-url">smartappoint.app · espace client</span>
+              </div>
 
-            <div className="client-showcase-list">
-              {journey.map((item) => (
-                <div key={item} className="client-showcase-item">
-                  <ChevronRight size={16} />
-                  <span>{item}</span>
+              <div className="showcase-body">
+                <div className="showcase-card showcase-card-primary">
+                  <p className="showcase-label">Parcours client</p>
+                  <h3>Comprendre, choisir, reserver et suivre son rendez-vous depuis un seul espace.</h3>
+                  <div className="client-journey">
+                    {journey.map((item) => (
+                      <div key={item} className="client-journey-item">
+                        <ChevronRight size={16} />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
+
+                <div className="showcase-card">
+                  <div className="client-journey-footer">
+                    <div>
+                      <strong>Notifications</strong>
+                      <span>Rappels et suivi des actions</span>
+                    </div>
+                    <div>
+                      <strong>Paiement</strong>
+                      <span>Parcours pret pour la validation</span>
+                    </div>
+                  </div>
+                  <div className="client-journey-note">
+                    Une presentation simple pour comprendre tout de suite comment utiliser la plateforme.
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="client-showcase-footer">
-              <div>
-                <strong>Notifications</strong>
-                <span>Rappels et suivi des actions</span>
-              </div>
-              <div>
-                <strong>Paiement</strong>
-                <span>Parcours pret pour la validation</span>
-              </div>
-            </div>
-
-            <div className="client-showcase-note">
-              Une presentation simple pour comprendre tout de suite comment utiliser la plateforme.
+              <span className="showcase-chip showcase-chip-1">
+                <Search size={13} /> Specialites
+              </span>
+              <span className="showcase-chip showcase-chip-2">
+                <CalendarDays size={13} /> Reservation
+              </span>
+              <span className="showcase-chip showcase-chip-3">
+                <BellRing size={13} /> Rappels
+              </span>
+              <span className="showcase-chip showcase-chip-4">
+                <ShieldCheck size={13} /> Parcours rassurant
+              </span>
             </div>
           </div>
         </section>
